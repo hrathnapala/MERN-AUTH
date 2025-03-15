@@ -4,11 +4,16 @@ import dotenv from 'dotenv';
 // middleware
 import { notFound,errorHandler } from './middleware/errorMiddleware.js';
 
-import { authUser } from './controllers/userController.js';
+import connectDB from './config/db.js';
+
+import userRoutes from './routes/userRoutes.js';
+
 
 dotenv.config();
 
 const PORT = process.env.PORT || 9500;
+
+connectDB();
 
 const app = express();
 
@@ -16,7 +21,7 @@ app.get('/', (req,res) => {
     res.send('Server is ready')
 })
 
-app.use("/api/users/",authUser);
+app.use("/api/users/",userRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
