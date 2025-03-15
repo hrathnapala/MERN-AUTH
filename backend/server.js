@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 // middleware
 import { notFound,errorHandler } from './middleware/errorMiddleware.js';
 
-import { authUser } from './routes/userRoute.js';
+import { authUser } from './controllers/userController.js';
 
 dotenv.config();
 
